@@ -66,4 +66,40 @@
   body {
     @apply bg-background text-foreground;
   }
+
+
+  .supagreen {
+      font-size: 30px; /* Adjust size as needed */
+      color: #3ECF8E !important;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  h1 {
+    font-size: 30px;;
+  }
+
+  input {
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  button.submit {
+    width: 100%;
+  }
+
+  button {
+    width: 75px;
+    height: 30px;
+    justify-content: center;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: white;
+    background: white;
+    color: black;
+  }
+
 }
