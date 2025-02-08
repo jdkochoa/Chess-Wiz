@@ -7,7 +7,7 @@ export default function LoginPage() {
   return (
     <div className="">
       <div>
-        <h1>Login</h1>
+        <h2 className="">Login</h2>
       </div>
       <br />
       <form className="" action="">
@@ -20,7 +20,9 @@ export default function LoginPage() {
         <input id="password" name="password" type="password" required />
         <br />
         <br />
-        <button formAction={login}>Submit</button>
+        <button className="submit" formAction={login}>
+          Submit
+        </button>
       </form>
     </div>
   );

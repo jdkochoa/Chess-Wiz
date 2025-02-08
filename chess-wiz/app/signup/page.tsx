@@ -32,7 +32,9 @@ export default function SignUpPage() {
         <input id="password" name="password" type="password" required />
         <br />
         <br />
-        <button formAction={signup}>Sign Up</button>
+        <button className="submit" formAction={signup}>
+          Submit
+        </button>
       </form>
     </div>
   );
