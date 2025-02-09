@@ -18,8 +18,7 @@ export const login = async (formData: FormData) => {
   if (error) {
     return encodedRedirect("error", "/sign-in", error.message);
   }
-
-  return redirect("/protected");
+  return redirect("/overview");
 };
 
 export const signOutAction = async () => {

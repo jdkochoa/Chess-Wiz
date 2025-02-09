@@ -1,6 +1,10 @@
+"use client"
+
 import React from "react";
 import Overview from "@/components/Overview";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
-  return <Overview username="sonicisreal" />;
+    const user = useSearchParams().get("user") ?? "";
+  return <Overview username={user} />;
 }
