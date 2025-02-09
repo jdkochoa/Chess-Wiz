@@ -84,6 +84,9 @@
   input {
     border-radius: 10px;
     margin-bottom: 20px;
+    background-color: white;
+    color: black;
+    padding: 4px;
   }
 
   button.submit {
