@@ -16,7 +16,7 @@ export const login = async (formData: FormData) => {
   });
 
   if (error) {
-    return encodedRedirect("error", "/sign-in", error.message);
+    return encodedRedirect("error", "/signin", error.message);
   }
   return redirect("/overview");
 };
