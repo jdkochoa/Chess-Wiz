@@ -35,6 +35,24 @@ export async function gameStrings(username: string): Promise<string[]> {
     return moveArray;
 }
 
+export async function getGameJson(username: string) {
+    const res = await fetch(`https://lichess.org/api/games/user/${username}?max=5`, {
+        headers: { Accept: "application/x-ndjson" },
+    });
+
+    if (!res.ok) {
+        throw new Error(`Lichess API Error: ${res.status}`);
+    }
+
+    const data = await res.text();
+    const parsedGames = data
+        .trim()
+        .split("\n")
+        .map((line) => JSON.parse(line));
+    
+    return parsedGames;
+}
+
 export async function getEval(fen: string): Promise<number> {
     try {
         const res = await fetch(`https://stockfish.online/api/s/v2.php/?fen=${fen}&depth=15`);
