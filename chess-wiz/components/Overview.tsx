@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import style from "./Overview.module.css";
 import { CheckOverview, PostOverview } from "./PostOverview";
+import Link from "next/link";
 
 interface OverviewProps {
   username: string;
@@ -16,14 +17,7 @@ export default function Overview(props: OverviewProps) {
   async function fetchGamesAndAnalyze() {
     setLoading(true);
 
-    // Check if user has overview saved
-    const data = await CheckOverview({ username: props.username });
-    if (data) {
-      setOverview(data[0].overview);
-      setLoading(false);
-      console.log("data", data);
-      return;
-    }
+    
 
     console.log("No overview found. Proceeding to fetch games...");
     try {
@@ -59,7 +53,7 @@ export default function Overview(props: OverviewProps) {
             {
               role: "system",
               content:
-                "You are a chess analyst describing the playstyle of the person playing in all the games, and you need to provide them with personalized recommendations of openings, books, and masters they might like based on they're preferred way of playing. It's not about the most objectively correct advice, but what they would enjoy. Refer to the user in the second person. In your response you should return unformatted plain text.",
+                "You are a chess analyst describing the playstyle of the person playing in all the games, and you need to provide them with personalized recommendations of openings, books, and masters they might like based on they're preferred way of playing. It's not about the most objectively correct advice, but what they would enjoy. In your response you should return unformatted plain text.",
             },
             {
               role: "user",
@@ -101,7 +95,10 @@ export default function Overview(props: OverviewProps) {
       {loading ? (
         <p>Loading games and generating overview...</p>
       ) : (
+        <div>
         <p>{overview}</p>
+        <Link href={`../board?user=${props.username}`}>Review recent games from {props.username}.</Link>
+        </div>
       )}
     </div>
   );

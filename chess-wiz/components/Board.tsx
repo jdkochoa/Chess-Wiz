@@ -7,7 +7,11 @@ import { movesToFen, gameStrings, getEval, getOverview } from "@/utils/chessUtil
 import Bar from "./Bar";
 import style from "./Board.module.css";
 
-export default function Board() {
+interface BoardProps {
+    username : string;
+}
+
+export default function Board(props: BoardProps) {
     const [game, setGame] = useState(new Chess());
     const [moves, setMoves] = useState<string[]>([]);
     const [currentGameIndex, setCurrentGameIndex] = useState(0);
@@ -18,7 +22,7 @@ export default function Board() {
     useEffect(() => {
         async function fetchOverview() {
             try {
-                const data = await gameStrings("sonicisreal");
+                const data = await gameStrings(props.username);
                 /* If gameString is null return overview at currentGameIndex in supabase
                 *   setOver(game[currentGameIndex])
                 */
@@ -40,7 +44,7 @@ export default function Board() {
     useEffect(() => {
         async function fetchGameMoves() {
             try {
-                const fetchedMoves = await gameStrings("sonicisreal");
+                const fetchedMoves = await gameStrings(props.username);
                 // if fethed moves is null  setMoves(most recent game.split(" "))
                 if (fetchedMoves.length > 0) {
                     setMoves(fetchedMoves[0].split(" "));
@@ -86,7 +90,7 @@ export default function Board() {
     }
 
     async function changeGame(direction: number) {
-        const fetchedMoves = await gameStrings("sonicisreal");
+        const fetchedMoves = await gameStrings(props.username);
         // if null make fethched moves last 5 games in db
         
 

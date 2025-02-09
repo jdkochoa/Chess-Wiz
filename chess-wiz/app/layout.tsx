@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import Link from "next/link";
 import "./globals.css";
 import { Bold } from "lucide-react";
+import { createClient } from "@supabase/supabase-js";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -42,12 +43,7 @@ export default function RootLayout({
                     </b>
                   </div>
                   <div className="flex gap-8 items-center">
-                    <a href="/login">
-                      <button>Sign In</button>
-                    </a>
-                    <a href="/signup">
-                      <button>Sign Up</button>
-                    </a>
+                    
                   </div>
                 </div>
               </nav>
