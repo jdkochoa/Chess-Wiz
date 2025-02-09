@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import style from "./FirstTimeOverview.module.css";
 
 interface FirstTimeOverviewProps {
     username: string;
@@ -40,7 +41,7 @@ export default function FirstTimeOverview(props: FirstTimeOverviewProps) {
         body: JSON.stringify({
           model: "gpt-3.5-turbo", 
           messages: [
-            { role: "system", content: "You are a chess analyst providing insights on games." },
+            { role: "system", content: "You are a chess analyst describing the playstyle of the person playing in all the games, and you need to provide them with personalized recommendations of openings, books, and masters they might like based on they're preferred way of playing. It's not about the most objectively correct advice, but what they would enjoy. Refer to the user in the second person. In your response you should return unformatted plain text." },
             { role: "user", content: `Analyze the following chess games:\n${JSON.stringify(parsedGames, null, 2)}` },
           ],
           temperature: 0.7, 
@@ -68,9 +69,9 @@ export default function FirstTimeOverview(props: FirstTimeOverviewProps) {
   }, [props.username]);
 
   return (
-    <div>
+    <div id={style.overiewBox}>
       <h2>Chess Overview for {props.username}</h2>
-      {loading ? <p>Loading games and generating overview...</p> : <pre>{overview}</pre>}
+      {loading ? <p>Loading games and generating overview...</p> : <p>{overview}</p>}
     </div>
   );
 }
