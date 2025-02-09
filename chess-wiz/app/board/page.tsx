@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <div>
             <Board />
-            <Link href="../overview">Overview</Link>
+            
         </div>
     );
 }
