@@ -1,8 +1,6 @@
 import React from "react";
-import FirstTimeOverview from "@/components/FirstTimeOverview";
+import Overview from "@/components/Overview";
 
 export default function Home() {
-    return (
-        <FirstTimeOverview username="sonicisreal" />
-    );
+  return <Overview username="sonicisreal" />;
 }
